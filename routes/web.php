@@ -1,5 +1,7 @@
 <?php
 
+use App\Exports\MasterWBS;
+use App\Http\Controllers\TemplateImportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('admin/download-master-wbs', [TemplateImportController::class, 'download'])->name('master-wbs.download');
 
 Route::get('/', function () {
     return view('welcome');
