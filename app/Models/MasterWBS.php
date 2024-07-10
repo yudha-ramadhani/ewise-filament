@@ -23,7 +23,7 @@ class MasterWBS extends Model
 
     public function details()
     {
-        return $this->hasMany(MasterDetailWBS::class, 'wbs_id');
+        return $this->hasMany(MasterWBSDetail::class, 'wbs_id');
     }
 
     public function creator()
