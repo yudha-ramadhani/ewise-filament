@@ -10,8 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('r_a_b_s', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tr_rabs', function (Blueprint $table) {
+            $table->ulid('id')->primary();
+            $table->foreignUlid('proyek_id')
+                ->constrained('proyeks')
+                ->cascadeOnDelete();
+            $table->boolean('locked')
+                ->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -21,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('r_a_b_s');
+        Schema::dropIfExists('tr_rabs');
     }
 };

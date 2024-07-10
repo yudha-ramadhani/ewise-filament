@@ -4,15 +4,31 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('detail_r_a_b_s', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tr_rab_details', function (Blueprint $table) {
+            $table->ulid('id')->primary();
+            $table->foreignUlid('rab_id')
+                ->constrained('tr_rabs')
+                ->cascadeOnDelete();
+            $table->foreignUlid('parent')
+                ->nullable()
+                ->constrained('tr_rab_details')
+                ->cascadeOnDelete();
+            $table->text('isi');
+            $table->decimal('nilai_kontrak', 12, 2);
+            $table->foreignUlid('created_by')
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->foreignUlid('updated_by')
+                ->nullable()
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -22,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_r_a_b_s');
+        Schema::dropIfExists('tr_rab_details');
     }
 };

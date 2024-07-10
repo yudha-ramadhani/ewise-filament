@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('master_sumberdayas', function (Blueprint $table) {
-            $table->id();
+            $table->ulid('id')->primary();
             $table->string('kode_resources')->unique();
             $table->string('nama_sumberdaya');
             $table->string('satuan');

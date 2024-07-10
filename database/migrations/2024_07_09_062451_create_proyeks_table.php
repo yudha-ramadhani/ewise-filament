@@ -10,14 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('tr_rapks', function (Blueprint $table) {
+        Schema::create('proyeks', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlid('proyek_id')
-                ->constrained('proyeks')
+            $table->string('nama_proyek');
+            $table->foreignId('jenisproyek_id')
+                ->constrained('master_jenis_proyeks')
                 ->cascadeOnDelete();
-            $table->boolean('locked')
-                ->default(0);
-            $table->softDeletes();
+            $table->string('deskripsi');
+            $table->string('foto');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tr_rapks');
+        Schema::dropIfExists('proyeks');
     }
 };

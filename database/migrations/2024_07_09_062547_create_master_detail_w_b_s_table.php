@@ -10,17 +10,17 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('master_detail_w_b_s', function (Blueprint $table) {
-            $table->id();
+        Schema::create('master_detail_wbs', function (Blueprint $table) {
+            $table->ulid('id')->primary();
             $table->string('kode');
             $table->string('level');
-            $table->foreignId('parent')
+            $table->foreignUlid('parent')
                 ->nullable()
-                ->constrained('master_detail_w_b_s')
+                ->constrained('master_detail_wbs')
                 ->cascadeOnDelete();
             $table->string('deskripsi');
-            $table->foreignId('wbs_id')
-                ->constrained('master_w_b_s')
+            $table->foreignUlid('wbs_id')
+                ->constrained('master_wbs')
                 ->cascadeOnDelete();
             $table->foreignUlid('created_by')
                 ->constrained('users')
@@ -35,6 +35,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('master_detail_w_b_s');
+        Schema::dropIfExists('master_detail_wbs');
     }
 };
