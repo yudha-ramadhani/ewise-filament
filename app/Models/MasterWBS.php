@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class MasterWBS extends Model
 {
     use SoftDeletes;
-
+    protected $table = 'master_wbs';
     protected $fillable = [
         'jenisproyek_id',
         'nama_wbs',

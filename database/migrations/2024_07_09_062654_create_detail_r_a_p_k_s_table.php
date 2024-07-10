@@ -19,7 +19,7 @@ return new class extends Migration {
                 ->constrained('tr_rab_details')
                 ->cascadeOnDelete();
             $table->foreignUlid('wbsdetail_id')
-                ->constrained('master_detail_wbs')
+                ->constrained('master_wbs_details')
                 ->cascadeOnDelete();
             $table->foreignUlid('sumberdaya_id')
                 ->constrained('master_sumberdayas')

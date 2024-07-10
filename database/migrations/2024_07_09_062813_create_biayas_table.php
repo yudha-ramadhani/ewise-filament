@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->foreignId('jenisdokumen_id')
                 ->constrained('master_jenis_dokumens')
                 ->cascadeOnDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

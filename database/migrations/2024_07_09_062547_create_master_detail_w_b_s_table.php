@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('master_detail_wbs', function (Blueprint $table) {
+        Schema::create('master_wbs_details', function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->string('kode');
             $table->string('level');
             $table->foreignUlid('parent')
                 ->nullable()
-                ->constrained('master_detail_wbs')
+                ->constrained('master_wbs_details')
                 ->cascadeOnDelete();
             $table->string('deskripsi');
             $table->foreignUlid('wbs_id')

@@ -17,7 +17,8 @@ return new class extends Migration {
                 ->constrained('master_jenis_proyeks')
                 ->cascadeOnDelete();
             $table->string('deskripsi');
-            $table->string('foto');
+            $table->decimal('nilai', 12, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

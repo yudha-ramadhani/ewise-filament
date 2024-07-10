@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MasterDetailWBS extends Model
+class MasterWBSDetail extends Model
 {
     use SoftDeletes;
 
@@ -20,12 +20,12 @@ class MasterDetailWBS extends Model
 
     public function parent()
     {
-        return $this->belongsTo(MasterDetailWBS::class, 'parent_id');
+        return $this->belongsTo(MasterWBSDetail::class, 'parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany(MasterDetailWBS::class, 'parent_id');
+        return $this->hasMany(MasterWBSDetail::class, 'parent_id');
     }
 
     public function wbs()
